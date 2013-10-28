@@ -209,6 +209,7 @@ nnoremap <leader>w :wa<Enter>
 nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
 inoremap jj <Esc>
+inoremap <C-[> <Esc>
 nnoremap <Space> /
 "
 "edit and source vimrc file
