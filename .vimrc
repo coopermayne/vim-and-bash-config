@@ -1,9 +1,8 @@
-
+"required
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-"required
-Bundle 'gmarik/vundle'
 
+Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
@@ -17,10 +16,23 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-endwise'
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'pangloss/vim-javascript'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+Bundle 'repeat.vim'
+Bundle "nono/vim-handlebars"
 
 " ==============================
 set guifont=Menlo:h15
+set guioptions-=r
+set guioptions-=l
+set guioptions-=L
 set columns=80
+highlight ColorColumn guibg=#272626 
 
 set nocompatible
 if $COLORTERM == 'gnome-terminal'
@@ -28,7 +40,8 @@ if $COLORTERM == 'gnome-terminal'
 endif
 colorscheme mustang
 
-"set columns=80
+set foldmethod=indent
+
 "
 set wrap linebreak nolist
 
@@ -36,8 +49,8 @@ let mapleader = ","
 "
 "grep through directory
 set grepprg=ack
-nnoremap <F5> :cp<CR>
-nnoremap <F6> :cn<CR>
+nnoremap <C-a> :bp<CR>
+nnoremap <C-s> :bn<CR>
 
 "Description A minimal, but feature rich, example .vimrc. If you are a
 "              newbie, basing your first .vimrc on this file is a good choice.
@@ -137,6 +150,9 @@ set nostartofline
 " Display the cursor position on the last line of the screen or in the status
 " line of a window
 set ruler
+
+" highlight the current line
+set cursorline
 
 " Always display the status line, even if only one window is displayed
 set laststatus=2
@@ -250,6 +266,7 @@ autocmd BufReadPost *
 "open file browser in current dir and in vertical split
 nnoremap <leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+
 nnoremap <leader>q :wq<CR>
 
 "setting relative number or reg number
@@ -258,16 +275,17 @@ nnoremap <leader>nn :set number<CR>
 
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 
-nnoremap <leader>r :!ruby %<CR>
-nnoremap <leader>cr :call ColorChooser()<CR>
+"nnoremap <leader>r :!ruby %<CR>
 
 "fuzzy finder -- awesome
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 "finds the last .git and uses that as root
-let g:ctrlp_map = '<C-k>'
+"
+"let g:loaded_ctrlp=0
+let g:ctrlp_map = '<c-k>'
 let g:ctrlp_cmd = 'CtrlP'
-" uses current files directory as root
-" nnoremap <C-b> :CtrlPBuffer<CR>
+let g:ctrlp_working_path_mode=0
+command! RecentFiles :CtrlPMRUFiles<CR>
 
 "cut to clipboard
 vnoremap <leader>c "+y
@@ -277,7 +295,10 @@ nnoremap <C-l> :wincmd l<CR>
 
 nnoremap <Leader>f :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
-map <Leader>d :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+nnoremap <Leader>d call RunLastSpec()<CR>
+nnoremap <Leader>a :call RunAllSpecs()<CR>
 
 nnoremap <F1> :NERDTreeToggle<CR>
+
+inoremap <C-l> <esc>$a
+inoremap <C-CR> <CR><CR><esc>kS

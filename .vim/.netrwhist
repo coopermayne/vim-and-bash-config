@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/cooper/GA/projects/testy_app/app/views/stories'
-let g:netrw_dirhist_2='/Users/cooper/GA/projects/testy_app/app/assets/stylesheets'
-let g:netrw_dirhist_3='/Users/cooper/GA/projects/testy_app/app/views/sessions'
-let g:netrw_dirhist_4='/Users/cooper/GA/projects/testy_app/app/views'
-let g:netrw_dirhist_5='/Users/cooper/GA/projects/testy_app/app/views/users'
-let g:netrw_dirhist_6='/Users/cooper/GA/projects/testy_app/app/views/sessions'
-let g:netrw_dirhist_7='/Users/cooper/GA/projects/testy_app/app/models'
