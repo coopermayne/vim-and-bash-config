@@ -29,7 +29,7 @@ PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 # Sublime
 # ---------------------
  
-# Make sublime our editor of choice
+# Make vim our editor of choice
 export EDITOR='vim'
  
 # -----------------------
@@ -161,12 +161,12 @@ export GOOGLE_API_KEY="AIzaSyAzpDRDjUvIz0GUNdThv8Skd3R0AZcSdTM"
 
 export TEMPLATE="-T -d postgresql -m ~/GA/templates/rails_template/template.rb"
 
-alias vim='mvim --remote-silent'
-alias gvim=/Applications/MacVim.app/Contents/MacOS/vim
+alias mvim='mvim --remote-silent'
+#alias gvim=/Applications/MacVim.app/Contents/MacOS/vim
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 # Added by install_latest_perl_osx.pl
 [ -r /Users/cooper/.bashrc ] && source /Users/cooper/.bashrc
 
-
+alias tmux="TERM=screen-256color-bce tmux"

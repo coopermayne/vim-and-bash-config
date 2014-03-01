@@ -3,10 +3,12 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'vim-scripts/YankRing.vim'
+"YR messing up the @ binding... maybe this will fix
+"Bundle 'vim-scripts/YankRing.vim'
+Bundle 'Rename'
 Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
+"Bundle 'scroolouse/nerdtree'
 Bundle 'loremipsum'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'msanders/snipmate.vim'
@@ -24,7 +26,10 @@ Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'repeat.vim'
-Bundle "nono/vim-handlebars"
+Bundle 'nono/vim-handlebars'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'vim-stylus'
 
 " ==============================
 set guifont=Menlo:h15
@@ -32,7 +37,7 @@ set guioptions-=r
 set guioptions-=l
 set guioptions-=L
 set columns=80
-highlight ColorColumn guibg=#272626 
+"highlight ColorColumn guibg=#272626 
 
 set nocompatible
 if $COLORTERM == 'gnome-terminal'
@@ -152,7 +157,7 @@ set nostartofline
 set ruler
 
 " highlight the current line
-set cursorline
+"set cursorline
 
 " Always display the status line, even if only one window is displayed
 set laststatus=2
@@ -245,15 +250,18 @@ set statusline+=%=%f%m%r%h\ %w
 
 nnoremap <leader>p :YRShow<CR>
 
-nnoremap ; :
-nnoremap : ;
+"nnoremap ; :
+"nnoremap : ;
 nnoremap <silent> <leader><CR> i<CR><ESC>
 
 "set minimum space between cursor and start or end of displayed lines
-set so=2
+set so=4
+
+nnoremap <F6> :cp<cr>
+nnoremap <F8> :cn<cr>
 
 " Switch CWD to the directory of the open buffer
-nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -302,3 +310,9 @@ nnoremap <F1> :NERDTreeToggle<CR>
 
 inoremap <C-l> <esc>$a
 inoremap <C-CR> <CR><CR><esc>kS
+
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
