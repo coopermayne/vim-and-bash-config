@@ -1,0 +1,20 @@
+[user]
+	name = Cooper Mayne
+	email = coopermayne@gmail.com
+[color]
+	ui = true
+[alias]
+	st = status -sb -uall
+	lg = log --decorate --pretty=oneline --abbrev-commit --graph
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore_global
+[alias]
+        st = status
+        cm = commit -m
+        br = branch
+        co = checkout
+        df = diff
+        lg = log -p
+[github]
+	user = coopermayne
