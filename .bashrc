@@ -224,6 +224,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ack='ack-grep'
+alias tbasic='cp ~/Code/templates/basic/* .'
 
 export RBENV_ROOT="${HOME}/.rbenv"
 if [ -d "${RBENV_ROOT}" ]; then

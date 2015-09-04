@@ -12,7 +12,7 @@ bind 'TAB: menu-complete'
 # History
 # ---------------------
  
-# Larger bash history (allow 32³ entries; default is 500)
+# Larger bash history (allow 32ÃÂ³ entries; default is 500)
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
  
@@ -23,10 +23,10 @@ export HISTFILESIZE=$HISTSIZE
 # Home brew directories
 PATH="/usr/local/bin:$PATH"
 # Make sure we're pointing to the Postgres App's psql
-PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
  
 # ---------------------
-# Sublime
+# Vim
 # ---------------------
  
 # Make vim our editor of choice
@@ -53,6 +53,12 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 #alias ack='ack'
 alias bx='bundle exec'
+
+cl() {
+    #little helper
+    cd $1
+    ls
+}
 
 # ---------------------
 # Colors
@@ -154,7 +160,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # some rails config stuff...
 
-export PG_USERNAME="cooper"
+export PG_USERNAME="coopermayne"
 export PG_PASSWORD=
 
 export GOOGLE_API_KEY="AIzaSyAzpDRDjUvIz0GUNdThv8Skd3R0AZcSdTM"
@@ -167,6 +173,10 @@ alias mvim='mvim --remote-silent'
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 # Added by install_latest_perl_osx.pl
-[ -r /Users/cooper/.bashrc ] && source /Users/cooper/.bashrc
+#[ -r /Users/coopermayne/.bashrc ] && source /Users/coopermayne/.bashrc
 
 alias tmux="TERM=screen-256color-bce tmux"
+
+export PATH="$PATH:/Applications/Muse"
+
+export DYLD_FALLBACK_LIBRARY_PATH="$DYLD_FALLBACK_LIBRARY_PATH:/Applications/Muse"

@@ -2,34 +2,48 @@
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 "YR messing up the @ binding... maybe this will fix
-"Bundle 'vim-scripts/YankRing.vim'
-Bundle 'Rename'
-Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
-"Bundle 'scroolouse/nerdtree'
-Bundle 'loremipsum'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'msanders/snipmate.vim'
-Bundle 'Townk/vim-autoclose'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'pangloss/vim-javascript'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'repeat.vim'
-Bundle 'nono/vim-handlebars'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'vim-stylus'
+"Plugin 'vim-scripts/YankRing.vim'
+"Plugin 'Rename'
+"Plugin 'mileszs/ack.vim'
+"Plugin 'rizzatti/dash.vim'
+"Plugin 'mattn/webapi-vim'
+"Plugin 'mattn/gist-vim'
+"Plugin 'repeat.vim'
+"Plugin 'loremipsum'
+"Plugin 'msanders/snipmate.vim'
+"Plugin 'thoughtbot/vim-rspec'
+"Plugin 'tpope/vim-rails'
+"Plugin 'tpope/vim-endwise'
+Plugin 'godlygeek/tabular'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Townk/vim-autoclose'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-fugitive' "access Git in vim
+Plugin 'tpope/vim-surround'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'croaker/mustang-vim'
+
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="normal"
+let g:UltiSnipsSnippetDir="~/Code/vim-and-bash-config/UltiSnips"
 
 " ==============================
 set guifont=Menlo:h15
@@ -43,6 +57,7 @@ set nocompatible
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
+
 colorscheme mustang
 
 set foldmethod=indent
@@ -157,7 +172,7 @@ set nostartofline
 set ruler
 
 " highlight the current line
-"set cursorline
+set cursorline
 
 " Always display the status line, even if only one window is displayed
 set laststatus=2
@@ -248,17 +263,18 @@ nnoremap <leader>ba :1,1000 bdelete<CR>
 set statusline=\CWD:\ %r%{getcwd()}%h\ \ \ %{fugitive#statusline()} 
 set statusline+=%=%f%m%r%h\ %w
 
+"yankring history
 nnoremap <leader>p :YRShow<CR>
 
-"nnoremap ; :
-"nnoremap : ;
+"split lines
 nnoremap <silent> <leader><CR> i<CR><ESC>
 
 "set minimum space between cursor and start or end of displayed lines
 set so=4
 
-nnoremap <F6> :cp<cr>
-nnoremap <F8> :cn<cr>
+"search results...
+"nnoremap <F6> :cp<cr>
+"nnoremap <F8> :cn<cr>
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
@@ -279,11 +295,11 @@ nnoremap <leader>q :wq<CR>
 
 "setting relative number or reg number
 nnoremap <leader>nr :set relativenumber<CR>
-nnoremap <leader>nn :set number<CR>
+nnoremap <leader>nn :set norelativenumber<CR>
 
 autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
 
-"nnoremap <leader>r :!ruby %<CR>
+nnoremap <leader>r :!ruby %<CR>
 
 "fuzzy finder -- awesome
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -301,6 +317,7 @@ vnoremap <leader>c "+y
 nnoremap <C-h> :wincmd h<CR>
 nnoremap <C-l> :wincmd l<CR>
 
+"RSpec shortcuts
 nnoremap <Leader>f :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>d call RunLastSpec()<CR>
@@ -308,7 +325,9 @@ nnoremap <Leader>a :call RunAllSpecs()<CR>
 
 nnoremap <F1> :NERDTreeToggle<CR>
 
+"skip to end of line while in insert mode
 inoremap <C-l> <esc>$a
+"create new line while in insert mode
 inoremap <C-CR> <CR><CR><esc>kS
 
 vnoremap <silent> * :<C-U>
