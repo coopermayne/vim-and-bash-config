@@ -1,4 +1,5 @@
-eval "$(rbenv init -)"
+# for rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # ---------------------
 # Tab improvements
@@ -37,7 +38,8 @@ export EDITOR='vim'
 # ------------------------
  
 # Open files with Sublime
-alias subl='open -a "Sublime Text 2"'
+#alias subl='open -a "Sublime Text 2"'
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -155,28 +157,25 @@ PS1+="\$(prompt_git)" # Git details
 PS1+="\n" # Newline
 PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
  
-# for rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # some rails config stuff...
 
-export PG_USERNAME="coopermayne"
-export PG_PASSWORD=
+#export PG_USERNAME="coopermayne"
+#export PG_PASSWORD=
 
-export GOOGLE_API_KEY="AIzaSyAzpDRDjUvIz0GUNdThv8Skd3R0AZcSdTM"
+#export GOOGLE_API_KEY="AIzaSyAzpDRDjUvIz0GUNdThv8Skd3R0AZcSdTM"
 
-export TEMPLATE="-T -d postgresql -m ~/GA/templates/rails_template/template.rb"
+#export TEMPLATE="-T -d postgresql -m ~/GA/templates/rails_template/template.rb"
 
-alias mvim='mvim --remote-silent'
+#alias mvim='mvim --remote-silent'
 #alias gvim=/Applications/MacVim.app/Contents/MacOS/vim
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+#export PATH="/usr/local/heroku/bin:$PATH"
 # Added by install_latest_perl_osx.pl
 #[ -r /Users/coopermayne/.bashrc ] && source /Users/coopermayne/.bashrc
 
-alias tmux="TERM=screen-256color-bce tmux"
+#alias tmux="TERM=screen-256color-bce tmux"
 
-export PATH="$PATH:/Applications/Muse"
+#export PATH="$PATH:/Applications/Muse"
 
-export DYLD_FALLBACK_LIBRARY_PATH="$DYLD_FALLBACK_LIBRARY_PATH:/Applications/Muse"
+#export DYLD_FALLBACK_LIBRARY_PATH="$DYLD_FALLBACK_LIBRARY_PATH:/Applications/Muse"
