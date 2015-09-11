@@ -50,17 +50,6 @@ let g:UltiSnipsEditSplit="normal"
 let g:UltiSnipsSnippetDir="~/Code/vim-and-bash-config/UltiSnips"
 
 " ==============================
-set guifont=Menlo:h15
-set guioptions-=r
-set guioptions-=l
-set guioptions-=L
-set columns=80
-"highlight ColorColumn guibg=#272626 
-
-set nocompatible
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
 
 colorscheme mustang
 
@@ -261,7 +250,7 @@ set viminfo^=%
 "
 "get rid of a buffer... or all buffers....
 nnoremap <leader>bd :bdelete<cr>
-nnoremap <leader>ba :1,1000 bdelete<CR> 
+nnoremap <leader>ba :%bd<CR> 
 "
 
 set statusline=\CWD:\ %r%{getcwd()}%h\ \ \ %{fugitive#statusline()} 

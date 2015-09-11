@@ -1,6 +1,9 @@
 # for rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+#disable C-s
+stty -ixon
+
 # ---------------------
 # Tab improvements
 # ---------------------
@@ -36,9 +39,6 @@ export EDITOR='vim'
 # -----------------------
 # Alias
 # ------------------------
- 
-# Open files with Sublime
-#alias subl='open -a "Sublime Text 2"'
 
 alias ll='ls -alF'
 alias la='ls -A'
@@ -52,15 +52,12 @@ alias h=history
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias .....='cd ../../../..'
-#alias ack='ack'
 alias bx='bundle exec'
 
-cl() {
-    #little helper
-    cd $1
-    ls
-}
+
+function cs () {
+cd "$@" && ls
+      }
 
 # ---------------------
 # Colors
@@ -179,3 +176,9 @@ PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
 #export PATH="$PATH:/Applications/Muse"
 
 #export DYLD_FALLBACK_LIBRARY_PATH="$DYLD_FALLBACK_LIBRARY_PATH:/Applications/Muse"
+
+alias pi="ssh cooper@192.168.0.5"
+
+#run this
+cd ~/Code
+ls
