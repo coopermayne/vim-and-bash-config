@@ -12,9 +12,11 @@
 [alias]
         st = status
         cm = commit -m
+        ca = commit -m --ammend
         br = branch
         co = checkout
         df = diff
         lg = log -p
+        phm = push heroku master
 [github]
 	user = coopermayne

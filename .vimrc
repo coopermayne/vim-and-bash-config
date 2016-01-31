@@ -2,34 +2,36 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 "YR messing up the @ binding... maybe this will fix
 "Plugin 'vim-scripts/YankRing.vim'
-"Plugin 'Rename'
-"Plugin 'mileszs/ack.vim'
-"Plugin 'rizzatti/dash.vim'
-"Plugin 'mattn/webapi-vim'
-"Plugin 'mattn/gist-vim'
+Plugin 'Rename'
+Plugin 'mileszs/ack.vim'
+Plugin 'rizzatti/dash.vim'
 "Plugin 'repeat.vim'
 "Plugin 'loremipsum'
 "Plugin 'msanders/snipmate.vim'
 "Plugin 'thoughtbot/vim-rspec'
-"Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rails'
 "Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Townk/vim-autoclose'
-"Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-fugitive' "access Git in vim
 Plugin 'tpope/vim-surround'
 Plugin 'jelera/vim-javascript-syntax'
+"Plugin 'scrooloose/syntastic'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rizzatti/funcoo.vim'
-"Plugin 'kchmck/vim-coffee-script'
 Plugin 'croaker/mustang-vim'
-
+Plugin 'Lokaltog/vim-distinguished'
+"Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'digitaltoad/vim-jade'
+Plugin 'AndrewRadev/splitjoin.vim'
+'
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 
@@ -46,7 +48,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="normal"
+let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetDir="~/Code/vim-and-bash-config/UltiSnips"
 
 " ==============================
@@ -208,8 +210,8 @@ set expandtab
 
 " Indentation settings for using hard tabs for indent. Display tabs as
 " two characters wide.
-"set shiftwidth=2
-"set tabstop=2
+set shiftwidth=2
+set tabstop=2
 
 
 "------------------------------------------------------------
@@ -266,8 +268,8 @@ nnoremap <silent> <leader><CR> i<CR><ESC>
 set so=4
 
 "search results...
-"nnoremap <F6> :cp<cr>
-"nnoremap <F8> :cn<cr>
+nnoremap <F7> :cp<cr>
+nnoremap <F9> :cn<cr>
 
 " Switch CWD to the directory of the open buffer
 nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
@@ -302,6 +304,8 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-k>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode=0
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 command! RecentFiles :CtrlPMRUFiles<CR>
 
 "cut to clipboard
@@ -320,8 +324,10 @@ nnoremap <F1> :NERDTreeToggle<CR>
 
 "skip to end of line while in insert mode
 inoremap <C-l> <esc>$a
+
 "create new line while in insert mode
-inoremap <C-CR> <CR><CR><esc>kS
+imap <C-c> <CR><CR><Esc>kS
+let g:syntastic_check_on_open=1
 
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>

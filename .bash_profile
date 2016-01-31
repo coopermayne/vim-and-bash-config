@@ -1,3 +1,5 @@
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 # for rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -27,7 +29,7 @@ export HISTFILESIZE=$HISTSIZE
 # Home brew directories
 PATH="/usr/local/bin:$PATH"
 # Make sure we're pointing to the Postgres App's psql
-PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
  
 # ---------------------
 # Vim
@@ -43,7 +45,7 @@ export EDITOR='vim'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias lt='ls -t'
+#alias lt='ls -t'
 # prompt before deleting!
 alias rm="rm -i"
 alias c=clear
@@ -52,7 +54,6 @@ alias h=history
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias bx='bundle exec'
 
 
 function cs () {
@@ -173,12 +174,18 @@ PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
 
 #alias tmux="TERM=screen-256color-bce tmux"
 
-#export PATH="$PATH:/Applications/Muse"
+alias pi="ssh cooper@192.168.1.111"
+alias server="ruby -rsinatra -e'set :public_folder, \".\"; set :port, 4567'"
+alias morph="cd ~/Documents/Morphosis/Code/database/morphAPI/"
+alias erd="bundle exec erd && open erd.pdf"
+alias ha="history | ack"
+alias be="bundle exec"
 
-#export DYLD_FALLBACK_LIBRARY_PATH="$DYLD_FALLBACK_LIBRARY_PATH:/Applications/Muse"
-
-alias pi="ssh cooper@192.168.0.5"
+alias bashe="vim ~/.bash_profile"
+alias bashs="source ~/.bash_profile"
 
 #run this
 cd ~/Code
 ls
+
+export WMSJAVA_HOME="/Library/WowzaStreamingEngine-4.3.0/java"
