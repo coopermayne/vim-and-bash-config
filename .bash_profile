@@ -160,21 +160,6 @@ PS1+="\$(prompt_git)" # Git details
 PS1+="\n" # Newline
 PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
  
-# some rails config stuff...
-
-#export PG_USERNAME="coopermayne"
-#export PG_PASSWORD=
-
-#export GOOGLE_API_KEY="AIzaSyAzpDRDjUvIz0GUNdThv8Skd3R0AZcSdTM"
-
-#export TEMPLATE="-T -d postgresql -m ~/GA/templates/rails_template/template.rb"
-
-#alias mvim='mvim --remote-silent'
-#alias gvim=/Applications/MacVim.app/Contents/MacOS/vim
-
-### Added by the Heroku Toolbelt
-#export PATH="/usr/local/heroku/bin:$PATH"
-# Added by install_latest_perl_osx.pl
 #[ -r /Users/coopermayne/.bashrc ] && source /Users/coopermayne/.bashrc
 
 #alias tmux="TERM=screen-256color-bce tmux"
@@ -195,3 +180,8 @@ alias be="bundle exec"
 alias bashe="vim ~/.bash_profile"
 alias bashs="source ~/.bash_profile"
 alias bashsave="cd ~/Code/vim-and-bash-config && git add . && git cm 'update' && git push"
+
+acp ()
+{
+  git add -A;git commit -m "$1";git push
+}
