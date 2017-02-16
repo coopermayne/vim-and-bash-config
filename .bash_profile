@@ -191,7 +191,7 @@ alias be="bundle exec"
 
 alias bashe="vim ~/.bash_profile"
 alias bashs="source ~/.bash_profile"
-alias bashsave="cd ~/Code/vim-and-bash-config && git add . && git cm 'update'"
+alias bashsave="cd ~/Code/vim-and-bash-config && git add . && git cm 'update' && git push"
 alias getip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 #run this
