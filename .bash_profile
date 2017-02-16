@@ -179,24 +179,19 @@ PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
 
 #alias tmux="TERM=screen-256color-bce tmux"
 
-alias pi="ssh cooper@192.168.1.111"
 alias server="ruby -rsinatra -e'set :public_folder, \".\"; set :port, 4567'"
+
 alias morph="cd ~/Documents/Morphosis/Code/database/morphAPI/"
 alias morphf="cd ~/Documents/Morphosis/Code/database/morph_frontend/"
-alias tank="cd ~/Code/TANKHOUSE"
+
+alias now="cd ~/Code/NOW/back"
+alias nowf="cd ~/Code/NOW/front"
+
 alias arthur="cd ~/Dropbox/Server/arthureby"
-alias erd="bundle exec erd && open erd.pdf"
+
 alias ha="history | ack"
 alias be="bundle exec"
 
 alias bashe="vim ~/.bash_profile"
 alias bashs="source ~/.bash_profile"
 alias bashsave="cd ~/Code/vim-and-bash-config && git add . && git cm 'update' && git push"
-alias getip="dig +short myip.opendns.com @resolver1.opendns.com"
-
-#run this
-cd ~/Code
-ls
-
-export WMSJAVA_HOME="/Library/WowzaStreamingEngine-4.3.0/java"
-export TEMPLATE="~/Code/templates/basic.rb"
