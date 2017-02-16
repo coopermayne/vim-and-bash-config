@@ -10,13 +10,17 @@
 	editor = vim
 	excludesfile = ~/.gitignore_global
 [alias]
-        st = status
         cm = commit -m
         ca = commit -m --ammend
         br = branch
         co = checkout
         df = diff
-        lg = log -p
         phm = push heroku master
 [github]
 	user = coopermayne
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[push]
+	default = simple

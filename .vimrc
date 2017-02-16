@@ -8,6 +8,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Rename'
 Plugin 'mileszs/ack.vim'
 Plugin 'rizzatti/dash.vim'
+Plugin 'digitaltoad/vim-pug'
 "Plugin 'repeat.vim'
 "Plugin 'loremipsum'
 "Plugin 'msanders/snipmate.vim'
@@ -319,6 +320,10 @@ nnoremap <Leader>f :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>d call RunLastSpec()<CR>
 nnoremap <Leader>a :call RunAllSpecs()<CR>
+
+vnoremap // y/<C-R>"<CR>"
+
+vnoremap gc :w !pbcopy<CR>
 
 nnoremap <F1> :NERDTreeToggle<CR>
 

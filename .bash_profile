@@ -1,5 +1,10 @@
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
 export PATH="$HOME/.rbenv/bin:$PATH"
+
+export NVM_DIR="/Users/cooper/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # for rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -42,7 +47,7 @@ export EDITOR='vim'
 # Alias
 # ------------------------
 
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 #alias lt='ls -t'
@@ -177,15 +182,20 @@ PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
 alias pi="ssh cooper@192.168.1.111"
 alias server="ruby -rsinatra -e'set :public_folder, \".\"; set :port, 4567'"
 alias morph="cd ~/Documents/Morphosis/Code/database/morphAPI/"
+alias morphf="cd ~/Documents/Morphosis/Code/database/morph_frontend/"
+alias tank="cd ~/Code/TANKHOUSE"
+alias arthur="cd ~/Dropbox/Server/arthureby"
 alias erd="bundle exec erd && open erd.pdf"
 alias ha="history | ack"
 alias be="bundle exec"
 
 alias bashe="vim ~/.bash_profile"
 alias bashs="source ~/.bash_profile"
+alias getip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 #run this
 cd ~/Code
 ls
 
 export WMSJAVA_HOME="/Library/WowzaStreamingEngine-4.3.0/java"
+export TEMPLATE="~/Code/templates/basic.rb"
