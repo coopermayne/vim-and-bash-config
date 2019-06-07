@@ -1,6 +1,10 @@
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/foreman-0.83.0/bin:$PATH"
 
 export NVM_DIR="/Users/cooper/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -47,10 +51,11 @@ export EDITOR='vim'
 # Alias
 # ------------------------
 
+alias tfa='source ~/Code/tensorflow/bin/activate'
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
-#alias lt='ls -t'
+alias lbt='ls -t'
 # prompt before deleting!
 alias rm="rm -i"
 alias c=clear
@@ -183,5 +188,17 @@ alias bashsave="cd ~/Code/vim-and-bash-config && git add . && git cm 'update' &&
 
 acp ()
 {
-  git add -A;git commit -m "$1";git push
+  git add -A;git commit -m "$1";git push origin master
+}
+
+transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
+  tmpfile=$( mktemp -t transferXXX )
+  if tty -s
+  then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile
+  else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile
+  fi
+  cat $tmpfile
+  rm -f $tmpfile
+  echo -e "\n"
 }

@@ -3,16 +3,16 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'leafgarland/typescript-vim'
 "YR messing up the @ binding... maybe this will fix
 "Plugin 'vim-scripts/YankRing.vim'
 Plugin 'Rename'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'mileszs/ack.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'digitaltoad/vim-pug'
 "Plugin 'repeat.vim'
-"Plugin 'loremipsum'
 "Plugin 'msanders/snipmate.vim'
-"Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-rails'
 "Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
@@ -34,7 +34,7 @@ Plugin 'Lokaltog/vim-distinguished'
 Plugin 'AndrewRadev/splitjoin.vim'
 '
 " Track the engine.
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
@@ -44,13 +44,12 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDir="~/Code/vim-and-bash-config/UltiSnips"
+"let g:UltiSnips,nippetDir="~/Code/vim-and-bash-config/UltiSnips"
 
 " ==============================
 
@@ -203,6 +202,8 @@ set notimeout ttimeout ttimeoutlen=200
 "
 " Indentation settings according to personal preference.
 
+set foldlevel=99
+
 " Indentation settings for using 2 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
 set shiftwidth=2
@@ -323,7 +324,7 @@ nnoremap <Leader>a :call RunAllSpecs()<CR>
 
 vnoremap // y/<C-R>"<CR>"
 
-vnoremap gc :w !pbcopy<CR>
+vnoremap cb :w !pbcopy<CR>
 
 nnoremap <F1> :NERDTreeToggle<CR>
 
