@@ -11,6 +11,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'mileszs/ack.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'digitaltoad/vim-pug'
+Plugin 'vim-ruby/vim-ruby'
 "Plugin 'repeat.vim'
 "Plugin 'msanders/snipmate.vim'
 Plugin 'tpope/vim-rails'
@@ -28,13 +29,14 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rizzatti/funcoo.vim'
 Plugin 'croaker/mustang-vim'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Lokaltog/vim-distinguished'
 "Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'digitaltoad/vim-jade'
 Plugin 'AndrewRadev/splitjoin.vim'
 '
 " Track the engine.
-"Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
@@ -44,10 +46,10 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnips,nippetDir="~/Code/vim-and-bash-config/UltiSnips"
 
@@ -334,6 +336,11 @@ inoremap <C-l> <esc>$a
 "create new line while in insert mode
 imap <C-c> <CR><CR><Esc>kS
 let g:syntastic_check_on_open=1
+
+":set guifont=Bitstream Vera Sans Mono:h24
+
+"hash tab helper
+"visual... then Tabularize /:\zs
 
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
