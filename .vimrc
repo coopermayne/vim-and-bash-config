@@ -1,94 +1,101 @@
+" Plugins {{{1
+
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'leafgarland/typescript-vim'
-"YR messing up the @ binding... maybe this will fix
-"Plugin 'vim-scripts/YankRing.vim'
-Plugin 'Rename'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'mileszs/ack.vim'
-Plugin 'rizzatti/dash.vim'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'vim-ruby/vim-ruby'
-"Plugin 'repeat.vim'
-"Plugin 'msanders/snipmate.vim'
-Plugin 'tpope/vim-rails'
-"Plugin 'tpope/vim-endwise'
-Plugin 'godlygeek/tabular'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-fugitive' "access Git in vim
-Plugin 'tpope/vim-surround'
-Plugin 'jelera/vim-javascript-syntax'
-"Plugin 'scrooloose/syntastic'
-Plugin 'pangloss/vim-javascript'
-Plugin 'rizzatti/funcoo.vim'
-Plugin 'croaker/mustang-vim'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'Lokaltog/vim-distinguished'
-"Plugin 'nathanaelkane/vim-indent-guides'
-"Plugin 'digitaltoad/vim-jade'
-Plugin 'AndrewRadev/splitjoin.vim'
-'
-" Track the engine.
-Plugin 'SirVer/ultisnips'
+" {{{2 fuzzy finder - best plugin
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+" collection of colorschemes {{{2 
+Plug 'rafi/awesome-vim-colorschemes'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+"distraction free writing
+Plug 'junegunn/goyo.vim'
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical"
-" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnips,nippetDir="~/Code/vim-and-bash-config/UltiSnips"
+" status bar {{{2
 
-" ==============================
+" snippets {{{2
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
-colorscheme mustang
+"syntax {{{2
+Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-rails'
+Plug 'leafgarland/typescript-vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'digitaltoad/vim-pug'
+Plug 'vim-ruby/vim-ruby'
+Plug 'godlygeek/tabular'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+"Plug 'scrooloose/syntastic'
+"Plug 'mattn/emmet-vim'
 
-set foldmethod=indent
+"helpers {{{2
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-surround'
+Plug 'AndrewRadev/splitjoin.vim'
 
-"
-set wrap linebreak nolist
+"nav {{{2
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
+"Plug 'masukomi/vim-markdown-folding' " requires python? wasn't working..
+Plug 'Lokaltog/vim-easymotion'
+
+"utils {{{2
+Plug 'tpope/vim-fugitive'   "access Git in vim
+Plug 'tpope/vim-eunuch'     "simple file commands
+Plug 'ConradIrwin/vim-bracketed-paste'
+"Plug 'nathanaelkane/vim-indent-guides'
+
+call plug#end() "plugins must be above this line
+
+set rtp-=~/.vim/after 
+set rtp+=~/.vim/after
+
+
+
+" Looks {{{1
+
+"colorscheme mustang
+colorscheme molokai
+
+"turn off delimitMate in markdown files
+"au FileType markdown let b:loaded_delimitMate = 1
+
+nnoremap <c-g> :Goyo<cr>
+
+set wrap linebreak 
+set nolist
 
 let mapleader = ","
-"
+
 "grep through directory
-set grepprg=ack
+"set grepprg=ack
+
 nnoremap <C-a> :bp<CR>
 nnoremap <C-s> :bn<CR>
 
-"Description A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
 set tags=./tags;
-"------------------------------------------------------------
+
 " Features {{{1
 "
-" These options and commands enable some very useful features in Vim, that
-" no user should have to live without.
-
+set nocompatible
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
-filetype indent plugin on
-filetype plugin on
 filetype indent on
+
+if has("autocmd")
+  filetype plugin indent on
+endif
 
 " Enable syntax highlighting
 syntax on
@@ -128,7 +135,6 @@ set showcmd
 
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
-set hlsearch
 
 set title
 set nobackup
@@ -147,6 +153,9 @@ set noswapfile
 " change Vim's behaviour in ways which deviate from the true Vi way, but
 " which are considered to add usability. Which, if any, of these options to
 " use is very much a personal preference, but they are harmless.
+
+" Get vim to respect spaces when using gf command
+set isfname+=32
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -194,7 +203,7 @@ set mouse=a
 set cmdheight=2
 
 " Display line numbers on the left
-set number
+"set number
 
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
@@ -203,8 +212,6 @@ set notimeout ttimeout ttimeoutlen=200
 " Indentation options {{{1
 "
 " Indentation settings according to personal preference.
-
-set foldlevel=99
 
 " Indentation settings for using 2 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
@@ -219,131 +226,213 @@ set tabstop=2
 
 
 "------------------------------------------------------------
-" Mappings {{{1
+" Random 1 {{{1
 "
-" Useful mappings
-
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
-
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-J> :nohl<CR><C-J>
-"              on this file is still a good idea.
-"------------------------------------------------------------
+set nohlsearch
 set history=1000
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set ssop-=options
 "
-"save all buffers....
+"save all buffers.... {{{2
 nnoremap <leader>w :wa<Enter>
 "
-"speed up scrolling speed...
+"speed up scrolling speed... {{{2
 nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
 inoremap jj <Esc>
 inoremap <C-[> <Esc>
 nnoremap <Space> /
+nnoremap <Tab> za
 "
-"edit and source vimrc file
+"edit and source vimrc file {{{2
 command! Evim :e $MYVIMRC
-command! Svim :so $MYVIMRC
+command! Svim :source $MYVIMRC
+nnoremap <leader>v :e $MYVIMRC<cr>
+
+" Source the vimrc file after saving it
+if has("autocmd")
+  autocmd bufwritepost .vimrc source $MYVIMRC
+endif
 "
-" Remember info about open buffers on close
+" Remember info about open buffers on close {{{2
 set viminfo^=% 
 "
-"get rid of a buffer... or all buffers....
+"get rid of a buffer... or all buffers.... {{{2
 nnoremap <leader>bd :bdelete<cr>
 nnoremap <leader>ba :%bd<CR> 
-"
 
+"better copy and paste function {{{2
+vnoremap <C-c> "+y
+map <C-v> "+p
+
+" format the statusline {{{2
 set statusline=\CWD:\ %r%{getcwd()}%h\ \ \ %{fugitive#statusline()} 
 set statusline+=%=%f%m%r%h\ %w
 
-"yankring history
-nnoremap <leader>p :YRShow<CR>
+"yankring history {{{2
+nnoremap <leader>p :reg<CR>
 
-"split lines
+"split lines {{{2
 nnoremap <silent> <leader><CR> i<CR><ESC>
 
-"set minimum space between cursor and start or end of displayed lines
+"set minimum space between cursor and start or end of displayed lines {{{2
 set so=4
 
-"search results...
-nnoremap <F7> :cp<cr>
-nnoremap <F9> :cn<cr>
+"search results... {{{2
+nnoremap <F7> :cprev<cr>
+nnoremap <F9> :cnext<cr>
+nnoremap <C-N> :cnext<CR> 
+nnoremap <C-P> :cprev<CR> 
 
-" Switch CWD to the directory of the open buffer
+" Switch CWD to the directory of the open buffer {{{2
 nnoremap <leader>cd :lcd %:p:h<cr>:pwd<cr>
 
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files (You want this!) {{{2
 autocmd BufReadPost *
       \ if line("'\"") > 0 && line("'\"") <= line("$") |
       \   exe "normal! g`\"" |
       \ endif
 
-"
-"
-"open file browser in current dir and in vertical split
-nnoremap <leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+" DISABLEDautocmd BufNewFile,BufReadPost *.txt set filetype=markdown {{{2
+"open file browser in current dir and in vertical split {{{2
+"nnoremap <leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 
 nnoremap <leader>q :wq<CR>
 
-"setting relative number or reg number
-nnoremap <leader>nr :set relativenumber<CR>
-nnoremap <leader>nn :set norelativenumber<CR>
-
-autocmd BufNewFile,BufReadPost *.ino,*.pde set filetype=cpp
-
-nnoremap <leader>r :!ruby %<CR>
-
-"fuzzy finder -- awesome
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-"finds the last .git and uses that as root
-"
-"let g:loaded_ctrlp=0
-let g:ctrlp_map = '<c-k>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
-command! RecentFiles :CtrlPMRUFiles<CR>
-
-"cut to clipboard
+"cut to clipboard {{{2
 vnoremap <leader>c "+y
 
-nnoremap <C-h> :wincmd h<CR>
-nnoremap <C-l> :wincmd l<CR>
-
-"RSpec shortcuts
-nnoremap <Leader>f :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>d call RunLastSpec()<CR>
-nnoremap <Leader>a :call RunAllSpecs()<CR>
-
-vnoremap // y/<C-R>"<CR>"
-
-vnoremap cb :w !pbcopy<CR>
-
+" nerdtree {{{2
 nnoremap <F1> :NERDTreeToggle<CR>
 
-"skip to end of line while in insert mode
-inoremap <C-l> <esc>$a
+" skip to end of line while in insert mode {{{2
+inoremap <C-L> <esc>$a
+inoremap <C-A> <esc>^i
 
-"create new line while in insert mode
-imap <C-c> <CR><CR><Esc>kS
-let g:syntastic_check_on_open=1
+" create new line while in insert mode (for favascript functions) {{{2
+imap <C-c> <CR><CR><Esc>kS 
 
-":set guifont=Bitstream Vera Sans Mono:h24
+" turn hybrid line numbers on {{{2
+:set number relativenumber
+:set nu rnu
 
-"hash tab helper
-"visual... then Tabularize /:\zs
+" insert date {{{2
+inoremap <leader>d <C-r>=strftime('%D %l:%M%P')<cr>
+inoremap <leader>D <C-r>=strftime('%D')<cr>
 
-vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+" spelling {{{2
+nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
+
+" FZF file nav {{{2
+
+" . = location of current file
+nnoremap '.  :exe ":FZF " . expand("%:h")<CR>
+" b = buffers
+nnoremap 'b  :Buffers<cr>
+" c = config
+nnoremap 'c  :FZF ~/.config/<cr>
+" d = documents
+nnoremap 'd  :FZF ~/Documents/<cr>
+" f = fzf
+nnoremap 'f  :FZF<cr>
+nnoremap <c-k>  :FZF<cr>
+
+" g = grep (ripgrep)
+nnoremap 'g  :Rg<cr>
+" h = home
+nnoremap 'h  :FZF ~/<cr>
+" n = notes
+nnoremap 'n  :FZF ~/Google-Drive/Documents/nv<cr>
+
+" t = tags
+nnoremap 't  :Tags<cr>
+
+imap <c-x><c-f> <plug>(fzf-complete-path)
+
+" Steve Losh
+
+noremap H ^
+noremap L g_
+
+" Letters {{{2
+map! <C-v>GA Γ
+map! <C-v>DE Δ
+map! <C-v>TH Θ
+map! <C-v>LA Λ
+map! <C-v>XI Ξ
+map! <C-v>PI Π
+map! <C-v>SI Σ
+map! <C-v>PH Φ
+map! <C-v>PS Ψ
+map! <C-v>OM Ω
+map! <C-v>al α
+map! <C-v>be β
+map! <C-v>ga γ
+map! <C-v>de δ
+map! <C-v>ep ε
+map! <C-v>ze ζ
+map! <C-v>et η
+map! <C-v>th θ
+map! <C-v>io ι
+map! <C-v>ka κ
+map! <C-v>la λ
+map! <C-v>mu μ
+map! <C-v>xi ξ
+map! <C-v>pi π
+map! <C-v>rh ρ
+map! <C-v>si σ
+map! <C-v>ta τ
+map! <C-v>ps ψ
+map! <C-v>om ω
+map! <C-v>ph ϕ
+" Math {{{2
+map! <C-v>ll →
+map! <C-v>hh ⇌
+map! <C-v>kk ↑
+map! <C-v>jj ↓
+map! <C-v>= ∝
+map! <C-v>~ ≈
+map! <C-v>!= ≠
+map! <C-v>!> ⇸
+map! <C-v>~> ↝
+map! <C-v>>= ≥
+map! <C-v><= ≤
+map! <C-v>0  °
+map! <C-v>ce ¢
+map! <C-v>*  •
+map! <C-v>co ⌘
+" Subscript and Superscript {{{2
+inoremap <leader>1 ~1~
+inoremap <leader>2 ~2~
+inoremap <leader>3 ~3~
+inoremap <leader>4 ~4~
+inoremap <leader>5 ~5~
+inoremap <leader>6 ~6~
+inoremap <leader>7 ~7~
+inoremap <leader>8 ~8~
+inoremap <leader>9 ~9~
+inoremap <leader>== ^+^
+inoremap <leader>=2 ^2+^
+inoremap <leader>=3 ^3+^
+inoremap <leader>-- ^-^
+inoremap <leader>-2 ^2-^
+inoremap <leader>-3 ^3-^
+
+"print current markdown file to PDF and open {{{2
+nnoremap <leader>m :w!<cr>:exe "!pandoc " . fnameescape(expand('%:p')) . " -t pdf -f markdown  -o " . fnameescape(expand('%:p:r')) . ".pdf && open " . fnameescape(expand('%:p:r')) . ".pdf"<cr>
+
+" Folding {{{1
+"set foldenable
+"set foldmethod=expand
+
+set foldenable
+set foldlevelstart=0
+"let g:markdown_fold_style = 'nested'
+"let g:markdown_folding = 1
+
+autocmd FileType vim set foldmethod=marker
