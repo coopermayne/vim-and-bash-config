@@ -1,16 +1,17 @@
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/foreman-0.83.0/bin:$PATH"
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/coopermayne/Downloads/Dog adjudication-2ffe706a9cf2.json"
+
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#export PATH="$HOME/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/foreman-0.83.0/bin:$PATH"
 
 export NVM_DIR="/Users/cooper/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # for rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 #disable C-s
 stty -ixon
@@ -36,7 +37,6 @@ export HISTFILESIZE=$HISTSIZE
 # ---------------------
  
 # Home brew directories
-PATH="/usr/local/bin:$PATH"
 # Make sure we're pointing to the Postgres App's psql
 export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
  
@@ -48,10 +48,16 @@ export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 export EDITOR='vim'
  
 # -----------------------
+# FZF key bindings
+# ------------------------
+bind '"\C-v":"vim\n"'
+bind '"\C-n":"cd ~/Google-Drive/Documents/nv\nvim -c :FZF\n"'
+
+
+# -----------------------
 # Alias
 # ------------------------
 
-alias tfa='source ~/Code/tensorflow/bin/activate'
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
@@ -165,7 +171,8 @@ PS1+="\$(prompt_git)" # Git details
 PS1+="\n" # Newline
 PS1+="${style_chars}\$ \[${RESET}\]" # $ (and reset color)
  
-#[ -r /Users/coopermayne/.bashrc ] && source /Users/coopermayne/.bashrc
+#source "$HOME/.zshrc"
+source "$HOME/.bashrc"
 
 #alias tmux="TERM=screen-256color-bce tmux"
 
@@ -184,7 +191,7 @@ alias be="bundle exec"
 
 alias bashe="vim ~/.bash_profile"
 alias bashs="source ~/.bash_profile"
-alias bashsave="cd ~/Code/vim-and-bash-config && git add . && git cm 'update' && git push"
+#alias bashsave="cd ~/Code/vim-and-bash-config && git add . && git cm 'update' && git push"
 
 acp ()
 {
@@ -202,3 +209,26 @@ transfer() { if [ $# -eq 0 ]; then echo -e "No arguments specified. Usage:\necho
   rm -f $tmpfile
   echo -e "\n"
 }
+
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+
+export PATH="/usr/local/opt/node@6/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/coopermayne/google-cloud-sdk/path.bash.inc' ]; then . '/Users/coopermayne/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/coopermayne/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/coopermayne/google-cloud-sdk/completion.bash.inc'; fi
+
+export CLOUDSDK_PYTHON="/usr/bin/python"
+
+# -----------------------
+# Functions
+# ------------------------
+
+recent() {
+  find ~/Google-Drive/ -type f -name "*.md" -mtime -$1 -exec vim "{}" +
+}
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
