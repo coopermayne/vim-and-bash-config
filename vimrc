@@ -16,9 +16,7 @@ Plug 'junegunn/goyo.vim'
 " status bar {{{2
 
 " snippets {{{2
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 "syntax {{{2
@@ -436,3 +434,11 @@ set foldlevelstart=0
 "let g:markdown_folding = 1
 
 autocmd FileType vim set foldmethod=marker
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
