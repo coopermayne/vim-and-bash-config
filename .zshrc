@@ -4,6 +4,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/coopermayne/.oh-my-zsh"
 
+ #added for rbenv
+ eval "$(rbenv init -)"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -68,7 +71,7 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf)
+plugins=(git fzf zsh-interactive-cd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -94,8 +97,11 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
- alias zshe="nvim ~/.zshrc"
- alias zshs="source ~/.zshrc"
+ alias zshe="nvim ~/Code/vim-and-bash-config/.zshrc"
+ alias zshs="source -/.zshrc"
  alias ohmyzsh="nvim ~/.oh-my-zsh"
 
  source $HOME/.fzf.zsh
+
+ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
