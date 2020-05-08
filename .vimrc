@@ -41,7 +41,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-"Plug 'masukomi/vim-markdown-folding' " requires python? wasn't working..
+Plug 'masukomi/vim-markdown-folding' " requires python? wasn't working..
 Plug 'Lokaltog/vim-easymotion'
 
 "utils {{{2
@@ -63,7 +63,7 @@ set rtp+=~/.vim/after
 colorscheme molokai
 
 "turn off delimitMate in markdown files
-"au FileType markdown let b:loaded_delimitMate = 1
+au FileType markdown let b:loaded_delimitMate = 1
 
 nnoremap <c-g> :Goyo<cr>
 
@@ -264,8 +264,8 @@ nnoremap <leader>bd :bdelete<cr>
 nnoremap <leader>ba :%bd<CR> 
 
 "better copy and paste function {{{2
-vnoremap <C-c> "+y
-map <C-v> "+p
+"vnoremap <C-c> "+y
+"map <C-v> "+p
 
 " format the statusline {{{2
 set statusline=\CWD:\ %r%{getcwd()}%h\ \ \ %{fugitive#statusline()} 
@@ -345,7 +345,7 @@ nnoremap 'g  :Rg<cr>
 " h = home
 nnoremap 'h  :FZF ~/<cr>
 " n = notes
-nnoremap 'n  :FZF ~/Google-Drive/Documents/nv<cr>
+nnoremap 'n  :FZF ~/Dropbox/Notebook<cr>
 
 " t = tags
 nnoremap 't  :Tags<cr>
@@ -358,68 +358,68 @@ noremap H ^
 noremap L g_
 
 " Letters {{{2
-map! <C-v>GA Γ
-map! <C-v>DE Δ
-map! <C-v>TH Θ
-map! <C-v>LA Λ
-map! <C-v>XI Ξ
-map! <C-v>PI Π
-map! <C-v>SI Σ
-map! <C-v>PH Φ
-map! <C-v>PS Ψ
-map! <C-v>OM Ω
-map! <C-v>al α
-map! <C-v>be β
-map! <C-v>ga γ
-map! <C-v>de δ
-map! <C-v>ep ε
-map! <C-v>ze ζ
-map! <C-v>et η
-map! <C-v>th θ
-map! <C-v>io ι
-map! <C-v>ka κ
-map! <C-v>la λ
-map! <C-v>mu μ
-map! <C-v>xi ξ
-map! <C-v>pi π
-map! <C-v>rh ρ
-map! <C-v>si σ
-map! <C-v>ta τ
-map! <C-v>ps ψ
-map! <C-v>om ω
-map! <C-v>ph ϕ
-" Math {{{2
-map! <C-v>ll →
-map! <C-v>hh ⇌
-map! <C-v>kk ↑
-map! <C-v>jj ↓
-map! <C-v>= ∝
-map! <C-v>~ ≈
-map! <C-v>!= ≠
-map! <C-v>!> ⇸
-map! <C-v>~> ↝
-map! <C-v>>= ≥
-map! <C-v><= ≤
-map! <C-v>0  °
-map! <C-v>ce ¢
-map! <C-v>*  •
-map! <C-v>co ⌘
-" Subscript and Superscript {{{2
-inoremap <leader>1 ~1~
-inoremap <leader>2 ~2~
-inoremap <leader>3 ~3~
-inoremap <leader>4 ~4~
-inoremap <leader>5 ~5~
-inoremap <leader>6 ~6~
-inoremap <leader>7 ~7~
-inoremap <leader>8 ~8~
-inoremap <leader>9 ~9~
-inoremap <leader>== ^+^
-inoremap <leader>=2 ^2+^
-inoremap <leader>=3 ^3+^
-inoremap <leader>-- ^-^
-inoremap <leader>-2 ^2-^
-inoremap <leader>-3 ^3-^
+"map! <C-v>GA Γ
+"map! <C-v>DE Δ
+"map! <C-v>TH Θ
+"map! <C-v>LA Λ
+"map! <C-v>XI Ξ
+"map! <C-v>PI Π
+"map! <C-v>SI Σ
+"map! <C-v>PH Φ
+"map! <C-v>PS Ψ
+"map! <C-v>OM Ω
+"map! <C-v>al α
+"map! <C-v>be β
+"map! <C-v>ga γ
+"map! <C-v>de δ
+"map! <C-v>ep ε
+"map! <C-v>ze ζ
+"map! <C-v>et η
+"map! <C-v>th θ
+"map! <C-v>io ι
+"map! <C-v>ka κ
+"map! <C-v>la λ
+"map! <C-v>mu μ
+"map! <C-v>xi ξ
+"map! <C-v>pi π
+"map! <C-v>rh ρ
+"map! <C-v>si σ
+"map! <C-v>ta τ
+"map! <C-v>ps ψ
+"map! <C-v>om ω
+"map! <C-v>ph ϕ
+"" Math {{{2
+"map! <C-v>ll →
+"map! <C-v>hh ⇌
+"map! <C-v>kk ↑
+"map! <C-v>jj ↓
+"map! <C-v>= ∝
+"map! <C-v>~ ≈
+"map! <C-v>!= ≠
+"map! <C-v>!> ⇸
+"map! <C-v>~> ↝
+"map! <C-v>>= ≥
+"map! <C-v><= ≤
+"map! <C-v>0  °
+"map! <C-v>ce ¢
+"map! <C-v>*  •
+"map! <C-v>co ⌘
+"" Subscript and Superscript {{{2
+"inoremap <leader>1 ~1~
+"inoremap <leader>2 ~2~
+"inoremap <leader>3 ~3~
+"inoremap <leader>4 ~4~
+"inoremap <leader>5 ~5~
+"inoremap <leader>6 ~6~
+"inoremap <leader>7 ~7~
+"inoremap <leader>8 ~8~
+"inoremap <leader>9 ~9~
+"inoremap <leader>== ^+^
+"inoremap <leader>=2 ^2+^
+"inoremap <leader>=3 ^3+^
+"inoremap <leader>-- ^-^
+"inoremap <leader>-2 ^2-^
+"inoremap <leader>-3 ^3-^
 
 "print current markdown file to PDF and open {{{2
 nnoremap <leader>m :w!<cr>:exe "!pandoc " . fnameescape(expand('%:p')) . " -t pdf -f markdown  -o " . fnameescape(expand('%:p:r')) . ".pdf && open " . fnameescape(expand('%:p:r')) . ".pdf"<cr>
