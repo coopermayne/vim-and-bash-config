@@ -2,7 +2,6 @@
 
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.vim/plugged')
-
 " {{{2 fuzzy finder - best plugin
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -20,15 +19,14 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 "syntax {{{2
-Plug 'plasticboy/vim-markdown'
-Plug 'tpope/vim-rails'
-Plug 'leafgarland/typescript-vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'digitaltoad/vim-pug'
-Plug 'vim-ruby/vim-ruby'
-Plug 'godlygeek/tabular'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
+Plug 'sheerun/vim-polyglot'
+Plug 'masukomi/vim-markdown-folding'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'hail2u/vim-css3-syntax'
+"Plug 'digitaltoad/vim-pug'
+"Plug 'vim-ruby/vim-ruby'
+"Plug 'jelera/vim-javascript-syntax'
+"Plug 'pangloss/vim-javascript'
 "Plug 'scrooloose/syntastic'
 "Plug 'mattn/emmet-vim'
 
@@ -36,12 +34,13 @@ Plug 'pangloss/vim-javascript'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'ferrine/md-img-paste.vim'
+
 
 "nav {{{2
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-Plug 'masukomi/vim-markdown-folding' " requires python? wasn't working..
 Plug 'Lokaltog/vim-easymotion'
 
 "utils {{{2
@@ -272,7 +271,7 @@ set statusline=\CWD:\ %r%{getcwd()}%h\ \ \ %{fugitive#statusline()}
 set statusline+=%=%f%m%r%h\ %w
 
 "yankring history {{{2
-nnoremap <leader>p :reg<CR>
+"nnoremap <leader>p :reg<CR>
 
 "split lines {{{2
 nnoremap <silent> <leader><CR> i<CR><ESC>
@@ -422,7 +421,11 @@ noremap L g_
 "inoremap <leader>-3 ^3-^
 
 "print current markdown file to PDF and open {{{2
-nnoremap <leader>m :w!<cr>:exe "!pandoc " . fnameescape(expand('%:p')) . " -t pdf -f markdown  -o " . fnameescape(expand('%:p:r')) . ".pdf && open " . fnameescape(expand('%:p:r')) . ".pdf"<cr>
+"
+"nnoremap <leader>m :w!<cr>:exe "!pandoc " . fnameescape(expand('%:p')) . " -t pdf -f markdown  -o " . fnameescape(expand('%:p:r')) . ".pdf && open " . fnameescape(expand('%:p:r')) . ".pdf"<cr>
+
+
+nnoremap <leader>m ::exe "!open -a Markoff " . fnameescape(expand('%:p'))""<cr>
 
 " Folding {{{1
 "set foldenable
@@ -442,3 +445,17 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+
+nnoremap gO :!open <cfile><CR>
+
+"highlight overlength lines
+"autocmd BufNewFile,BufRead *.md highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"autocmd BufNewFile,BufRead *.md match OverLength /\%81v.\+/
+
+"autocmd BufNewFile,BufRead *.md set concealcursor=
+autocmd BufNewFile,BufRead *.md set conceallevel=2
+
+"create a new note with a decent name
+

@@ -97,11 +97,20 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
- alias zshe="nvim ~/Code/vim-and-bash-config/.zshrc"
- alias zshs="source -/.zshrc"
- alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias ze="nvim ~/Code/vim-and-bash-config/.zshrc"
+alias zs="source ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias v="nvim"
+alias df='fd --type f --hidden --exclude .git . ~/Code/vim-and-bash-config | fzf | xargs nvim^M'
+
 
  source $HOME/.fzf.zsh
 
- export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
+# settings for ffmpeg and dependencies
+export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
+export LDFLAGS="-L/usr/local/opt/icu4c/lib"
+export CPPFLAGS="-I/usr/local/opt/icu4c/include"
