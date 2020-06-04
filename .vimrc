@@ -251,9 +251,9 @@ command! Svim :source $MYVIMRC
 nnoremap <leader>v :e $MYVIMRC<cr>
 
 " Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
+"if has("autocmd")
+  "autocmd bufwritepost .vimrc source $MYVIMRC
+"endif
 "
 " Remember info about open buffers on close {{{2
 set viminfo^=% 
@@ -263,7 +263,7 @@ nnoremap <leader>bd :bdelete<cr>
 nnoremap <leader>ba :%bd<CR> 
 
 "better copy and paste function {{{2
-"vnoremap <C-c> "+y
+vnoremap <C-c> "+y
 "map <C-v> "+p
 
 " format the statusline {{{2
@@ -327,31 +327,22 @@ nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
 
 " FZF file nav {{{2
 
-" . = location of current file
-nnoremap '.  :exe ":FZF " . expand("%:h")<CR>
 " b = buffers
 nnoremap 'b  :Buffers<cr>
-" c = config
-nnoremap 'c  :FZF ~/.config/<cr>
-" d = documents
-nnoremap 'd  :FZF ~/Documents/<cr>
-" f = fzf
-nnoremap 'f  :FZF<cr>
+
 nnoremap <c-k>  :FZF<cr>
 
-" g = grep (ripgrep)
+" g = grep (ripgrep) (in current dir)
 nnoremap 'g  :Rg<cr>
-" h = home
-nnoremap 'h  :FZF ~/<cr>
+
 " n = notes
 nnoremap 'n  :FZF ~/Dropbox/Notebook<cr>
 
-" t = tags
-nnoremap 't  :Tags<cr>
-
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
-" Steve Losh
+" this will FZF for word under cursor - used for notes with ids when linking
+" TODO maybe add another <cr> to the end to open the file
+nnoremap <expr> 'f ':FZF<cr>'.expand('<cword>')
 
 noremap H ^
 noremap L g_
