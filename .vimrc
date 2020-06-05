@@ -21,6 +21,7 @@ Plug 'honza/vim-snippets'
 "syntax {{{2
 Plug 'sheerun/vim-polyglot'
 Plug 'masukomi/vim-markdown-folding'
+
 "Plug 'leafgarland/typescript-vim'
 "Plug 'hail2u/vim-css3-syntax'
 "Plug 'digitaltoad/vim-pug'
@@ -242,8 +243,8 @@ nnoremap <C-E> 3<C-E>
 nnoremap <C-Y> 3<C-Y>
 inoremap jj <Esc>
 inoremap <C-[> <Esc>
-nnoremap <Space> /
-nnoremap <Tab> za
+nnoremap <Space> za
+"nnoremap <Tab> za
 "
 "edit and source vimrc file {{{2
 command! Evim :e $MYVIMRC
@@ -431,22 +432,31 @@ autocmd FileType vim set foldmethod=marker
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>" "right next to c-n
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+autocmd FileType markdown set nowrap
 
 nnoremap gO :!open <cfile><CR>
 
 "highlight overlength lines
-"autocmd BufNewFile,BufRead *.md highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"autocmd BufNewFile,BufRead *.md match OverLength /\%81v.\+/
+"autocmd FileType markdown highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"autocmd FileType markdown match OverLength /\%81v.\+/
+
+highlight ColorColumn ctermbg=darkgray
+set colorcolumn=80
 
 "autocmd BufNewFile,BufRead *.md set concealcursor=
-autocmd BufNewFile,BufRead *.md set conceallevel=2
+"autocmd BufNewFile,BufRead *.md set conceallevel=2
 
 "create a new note with a decent name
+"
+"
+cmap <C-T> <C-R>=strftime("%Y%m%d%H%M%S")<CR>
 
+command! -nargs=1 AddExt execute "saveas ".expand("%:p").<q-args>
+command! -nargs=1 ChgExt execute "saveas ".expand("%:p:r").<q-args>
