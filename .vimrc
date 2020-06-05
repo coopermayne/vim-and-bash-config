@@ -20,8 +20,9 @@ Plug 'honza/vim-snippets'
 
 "syntax {{{2
 Plug 'sheerun/vim-polyglot'
-Plug 'masukomi/vim-markdown-folding'
-
+"Plug 'masukomi/vim-markdown-folding'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 "Plug 'leafgarland/typescript-vim'
 "Plug 'hail2u/vim-css3-syntax'
 "Plug 'digitaltoad/vim-pug'
@@ -380,7 +381,7 @@ noremap L g_
 "map! <C-v>om ω
 "map! <C-v>ph ϕ
 "" Math {{{2
-"map! <C-v>ll →
+map! <C-v>ll →
 "map! <C-v>hh ⇌
 "map! <C-v>kk ↑
 "map! <C-v>jj ↓
@@ -393,7 +394,7 @@ noremap L g_
 "map! <C-v><= ≤
 "map! <C-v>0  °
 "map! <C-v>ce ¢
-"map! <C-v>*  •
+map! <C-v>*  •
 "map! <C-v>co ⌘
 "" Subscript and Superscript {{{2
 "inoremap <leader>1 ~1~
@@ -454,9 +455,10 @@ set colorcolumn=80
 "autocmd BufNewFile,BufRead *.md set conceallevel=2
 
 "create a new note with a decent name
-"
-"
 cmap <C-T> <C-R>=strftime("%Y%m%d%H%M%S")<CR>
 
 command! -nargs=1 AddExt execute "saveas ".expand("%:p").<q-args>
 command! -nargs=1 ChgExt execute "saveas ".expand("%:p:r").<q-args>
+
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_folding_disabled = 1
