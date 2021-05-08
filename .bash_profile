@@ -5,11 +5,15 @@
 # Larger bash history (allow 32ÃÂ³ entries; default is 500)
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
- 
+
 # -----------------------
 # FZF key bindings
 # ------------------------
-bind "\C-v" vim\n
+
+#Use vi keymapping in bash, allowing you manipulate text on the command line as you would in vi.
+#bind -m vi TODO
+ 
+bind "\C-v" nvim\n
 bind "\C-n" cd ~/Dropbox/Notebook\nvim -c :FZF\n
 
 # -----------------------
@@ -55,6 +59,8 @@ recent() {
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/Users/coopermayne/Downloads:$PATH"
+
 
 source "$HOME/.bashrc"
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile

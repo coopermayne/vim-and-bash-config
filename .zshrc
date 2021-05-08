@@ -1,3 +1,10 @@
+# load nvm
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
+
 # If you come from bash you might have to change your $PATH.
  export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -114,3 +121,11 @@ export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 export LDFLAGS="-L/usr/local/opt/icu4c/lib"
 export CPPFLAGS="-I/usr/local/opt/icu4c/include"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/coopermayne/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/coopermayne/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/coopermayne/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/coopermayne/google-cloud-sdk/completion.zsh.inc'; fi
+
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/coopermayne/Downloads/API Project-3043d2431df8.json"
