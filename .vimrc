@@ -310,6 +310,9 @@ nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
 nnoremap 'b  :Buffers<cr>
 nnoremap 's  :BLine<cr>
 
+" b = buffers
+nnoremap 'h  :History<cr>
+
 nnoremap <c-k>  :FZF<cr>
 
 " g = grep (ripgrep) (in current dir)
