@@ -4,6 +4,7 @@
 call plug#begin('~/.vim/plugged')
 "  fuzzy finder - best plugin
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " collection of colorschemes  
 Plug 'rafi/awesome-vim-colorschemes'
@@ -322,7 +323,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 
 " this will FZF for word under cursor - used for notes with ids when linking
 " TODO maybe add another <cr> to the end to open the file
-nnoremap <expr> 'f ':FZF<cr>'.expand('<cword>')
+"nnoremap <expr> 'f ':FZF<cr>'.expand('<cword>')
 
 noremap H ^
 noremap L g_

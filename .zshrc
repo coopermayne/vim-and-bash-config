@@ -24,7 +24,7 @@ ZSH_THEME="random"
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell")
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -78,7 +78,7 @@ ZSH_THEME="random"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf zsh-interactive-cd)
+plugins=(fzf zsh-interactive-cd ripgrep z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,24 +108,10 @@ alias ze="nvim ~/Code/vim-and-bash-config/.zshrc"
 alias zs="source ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias v="nvim"
-alias df='fd --type f --hidden --exclude .git . ~/Code/vim-and-bash-config | fzf | xargs nvim^M'
-
+alias df='fd --type f --hidden --exclude .git . ~/Code/vim-and-bash-config | fzf | xargs nvim'
 
  source $HOME/.fzf.zsh
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-
-# settings for ffmpeg and dependencies
-export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
-export LDFLAGS="-L/usr/local/opt/icu4c/lib"
-export CPPFLAGS="-I/usr/local/opt/icu4c/include"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/coopermayne/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/coopermayne/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/coopermayne/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/coopermayne/google-cloud-sdk/completion.zsh.inc'; fi
-
-export GOOGLE_APPLICATION_CREDENTIALS="/Users/coopermayne/Downloads/API Project-3043d2431df8.json"
