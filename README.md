@@ -8,6 +8,9 @@ install this stuff...
   - oh-my-zsh
   - neovim (nvim)
     - ruby, python2, python3
+    - install vim-plug
+      - sh -c 'curl -fLo "${$HOME/.config}"/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+      - echo "set runtimepath^=~/.vim runtimepath+=~/.vim/after \nlet &packpath = &runtimepath \nsource ~/Code/vim-and-bash-config/.vimrc" > $HOME/.config/nvim/init.vim
 
 ## Connect to dotfiles
 
